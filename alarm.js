@@ -10,7 +10,7 @@ class Alarm {
     playAlarm = time => {
         this.alarmAudio.currentTime = 0
         this.alarmAudio.play()
-        setTimeout(this.stopAlarm, time) // 16000 is about one cycle.
+        setTimeout(this.stopAlarm, time)
     }
 }
 
@@ -21,7 +21,7 @@ const serviceStatusText = document.querySelector(".ServiceStatusText")
 const e = document.querySelector(".TodoNotification")
 const observer = new MutationObserver(function (event) {
     if (e.classList.contains("TodoNotification-TicketToDo")) {
-        alarm.playAlarm(3000)
+        alarm.playAlarm(16000) // 16000 is about one cycle.
     }
 })
 
