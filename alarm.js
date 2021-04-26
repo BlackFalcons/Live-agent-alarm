@@ -5,18 +5,32 @@ class Alarm {
 
     stopAlarm = () => {
         this.alarmAudio.pause()
+        this.alarmAudio.currentTime = 0
     }
     
     playAlarm = time => {
-        this.alarmAudio.currentTime = 0
         this.alarmAudio.play()
         setTimeout(this.stopAlarm, time)
     }
 }
 
 const flightAlarm = new Audio('https://upload.wikimedia.org/wikipedia/commons/f/f9/Motorsirene_-_Feuerwehralarm.ogg')
-const alarm = new Alarm(flightAlarm)
-const serviceStatusText = document.querySelector(".ServiceStatusText")
+const alarm = new Alarm(new Audio('https://upload.wikimedia.org/wikipedia/commons/f/f9/Motorsirene_-_Feuerwehralarm.ogg'))
+
+const stopAlarmButton = document.createElement("button")
+stopAlarmButton.id = "stop-alarm-button"
+stopAlarmButton.innerText = "Stop alarm"
+stopAlarmButton.style.margin = "1rem"
+stopAlarmButton.style.marginLeft = "-5.6rem"
+stopAlarmButton.style.padding = "0.2rem"
+stopAlarmButton.style.position = "absolute"
+
+document.querySelector(".ComposeMainPanel").insertAdjacentElement("beforebegin", stopAlarmButton)
+
+stopAlarmButton.addEventListener("click", e => {
+    e.preventDefault()
+    alarm.stopAlarm()
+})
 
 const e = document.querySelector(".TodoNotification")
 const observer = new MutationObserver(function (event) {
