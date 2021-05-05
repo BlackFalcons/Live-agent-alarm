@@ -15,7 +15,7 @@ class Alarm {
 }
 
 const flightAlarm = new Audio('https://upload.wikimedia.org/wikipedia/commons/f/f9/Motorsirene_-_Feuerwehralarm.ogg')
-const alarm = new Alarm(new Audio('https://upload.wikimedia.org/wikipedia/commons/f/f9/Motorsirene_-_Feuerwehralarm.ogg'))
+const alarm = new Alarm(flightAlarm)
 
 const stopAlarmButton = document.createElement("button")
 stopAlarmButton.id = "stop-alarm-button"
